@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 15th National Games of People's Republic of China - Insight Report</title>
+    <style>
+        /* 
+           15th National Games Visual Identity System 
+           Colors: Deep Sea Blue & Vitality Magenta
+        */
+        :root {
+            --primary: #005bac; /* Official Blue */
+            --secondary: #009fe3; /* Light Blue */
+            --accent: #e6007e;    /* Magenta/Red */
+            --bg: #ffffff;
+            --text: #2c3e50;
+            --card-bg: #def5ff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        .header-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, #005bac 100%);
+            color: white;
+            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            box-shadow: 0 4px 15px #e6007f3a;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Decorative background circle */
+        .header-banner::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .mascot-container img {
+            height: 120px;
+            width: 120px;
+            background: white;
+            border-radius: 50%;
+            padding: 8px;
+            border: 4px solid var(--accent);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+
+        .header-info {
+            z-index: 2;
+        }
+
+        .header-info h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+
+        .header-info .subtitle {
+            opacity: 0.9;
+            margin-top: 8px;
+            font-size: 1rem;
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        @media(min-width: 768px) {
+            .container {
+                grid-template-columns: 2fr 1fr;
+            }
+            .full-width {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* Card Styling */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+        }
+        
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background: var(--accent);
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+
+        /* Section: Summary */
+        .summary-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #000000;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        /* Section: Highlights */
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+        }
+        .highlight-list li {
+            background: linear-gradient(to right, rgba(230, 0, 126, 0.1), transparent);
+            margin-bottom: 12px;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            font-weight: 500;
+        }
+
+        /* Section: Regional & Insights */
+        .insight-box {
+            background: #fff5f9; /* Very light magenta */
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(230, 0, 126, 0.1);
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .insight-title {
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Section: Keywords */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tag {
+            background: var(--primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .tag:hover {
+            background: var(--accent);
+        }
+
+        /* Section: Timeline */
+        .timeline-container {
+            position: relative;
+            border-left: 2px solid #ffffff;
+            margin-left: 10px;
+            padding-left: 20px;
+        }
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .timeline-event {
+            color: #000000;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        /* Section: Sources */
+        .source-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .source-table th {
+            text-align: left;
+            color: var(--text);
+            border-bottom: 2px solid var(--primary);
+            padding: 12px;
+            background: #f8f9fa;
+        }
+        .source-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .source-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .source-link:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+            font-size: 0.85rem;
+            border-top: 1px solid #e1e1e1;
+            margin-top: 40px;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header-banner">
+        <div class = "mascot-container">
+            <img src="https://assetoss.baygames.cn/__asset/ad1a3521f9/7994289dcb.jpg?w=380&h=290">
+        </div>
+        <div class="header-info">
+            <h1>The 15th National Games of People's Republic of China China</h1>
+            <div class="subtitle">
+                <span>Updated: 2025-11-20 10:13:19</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- 1. Executive Summary -->
+        <div class="card full-width">
+            <h2>Executive Summary</h2>
+            <div class="summary-text">
+                The 15th National Games saw a mix of intense competition, cultural performances, and technological innovations. Notable highlights included Liu Qingyi's victory in breaking dance, the use of drones for entertainment, and the conclusion of major events across various sports disciplines.
+            </div>
+        </div>
+
+        <!-- 2. Highlights (Left) -->
+        <div class="card">
+            <h2>Core Highlights</h2>
+            <ul class="highlight-list">
+                
+                <li>Liu Qingyi defended her title in Women's Breaking Dance at the 15th National Games.</li>
+                
+                <li>1,200 drones lit up Victoria Harbour as part of the opening or closing ceremony celebrations.</li>
+                
+                <li>Guangdong women's doubles tennis team won silver at the games.</li>
+                
+                <li>Rain caused upsets in some matches, adding to the excitement of the competition.</li>
+                
+                <li>Lin Haochao of Shandong won the men's cycling BMX racing event.</li>
+                
+            </ul>
+        </div>
+
+        <!-- 3. Regional & Keywords (Right) -->
+        <div class="card accent-border">
+            <h2>Keywords</h2>
+            <div class="tags">
+                
+                <span class="tag">#Liu Qingyi</span>
+                
+                <span class="tag">#drones</span>
+                
+                <span class="tag">#Guangdong</span>
+                
+                <span class="tag">#National Games</span>
+                
+                <span class="tag">#breaking dance</span>
+                
+            </div>
+            
+            <h2 style="margin-top:30px">Regional Analysis</h2>
+            <div style="font-size: 0.95rem; text-align: justify; color: #444;">
+                Guangdong continued to show strong performance in multiple sports, with athletes winning medals in tennis and other events. Hong Kong showcased its creativity through the drone light show, while Macau's involvement was less prominent in the reported news. The games highlighted regional collaboration and cultural integration.
+            </div>
+        </div>
+
+        <!-- 4. Deep Insights -->
+        <div class="card full-width">
+            <h2>Deep Insights: Beyond the Game</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                
+                <div class="insight-box">
+                    <span class="insight-title">Strategic Value Point 1</span>
+                    The use of advanced technology like drones in the games reflects the growing emphasis on innovation in large-scale sporting events.
+                </div>
+                
+                <div class="insight-box">
+                    <span class="insight-title">Strategic Value Point 2</span>
+                    The economic impact of the games is significant, with businesses like AIA Hong Kong offering special promotions to celebrate the athletes.
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- 5. Timeline -->
+        <div class="card full-width">
+            <h2>Preparation Timeline</h2>
+            <div class="timeline-container">
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2025-11-17</div>
+                    <div class="timeline-event">Day Eight Finals Live Recap from SwimSwam.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2025-11-17</div>
+                    <div class="timeline-event">Lion dance electrifies at the 15th National Games.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2025-11-19</div>
+                    <div class="timeline-event">1,200 drones light up Victoria Harbour for the National Games.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2025-11-19</div>
+                    <div class="timeline-event">Liu Qingyi defends her title in Women's Breaking Dance.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2025-11-19</div>
+                    <div class="timeline-event">Lin Haochao of Shandong wins men's cycling BMX racing.</div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- 6. Data Sources -->
+        <div class="card full-width">
+            <h2>Referenced News Sources</h2>
+            <table class="source-table">
+                <thead>
+                    <tr>
+                        <th width="15%">Source</th>
+                        <th>Title & Link</th>
+                        <th width="15%">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td><strong>Xinhua</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE43RTlwc0lsa1c3RzZRamRYZzF4ZjVMS3VndUpqTzhXeWk0R2FFYlZkMHRVWGkzYi1xNTdKSlJYdVRQTkxhVklwZ0V5YlBFT19HNTk2dUhiX1VwM3hxSC1KLS05RThRdmhUbkhScDYtMWFXWkVreUtHbmFMeWE?oc=5" target="_blank" class="source-link">Highlights of matches at 15th National Games (Nov. 19) - Xinhua</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 14:10:36 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>news.cgtn.com</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNdEI1WVRkU3V4bjVNeFFPVW9aLURFSGh0aExITGtCb1cyY1R5YzFOazlUQkVJS0piTnl4endrb3U2T3NuZDl5ZThTMEljaDlZbmh4UGxHSDdNa3hnSHQ2SFNERWh0SHlrRGd6SEZ1Y2txdHdqT1pSUG9pMU5kUGVUM3BPRGNSQVI4eW1CRFF2dUpZcGxtQkRpaFhLSUJvd3BfdnJscEpGaUowMTVjMGhCOVVWV2M5MlBEbzZuS0gyZ2xVTEFudFE?oc=5" target="_blank" class="source-link">1,200 drones light up Victoria Harbour for China's 15th National Games - news.cgtn.com</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 08:05:14 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Guangdong News</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE9XMWxLdnFuR1hKSkR0d1hVRk5MQTg1MjgyT2ZsQXlCWmRYaUxId2Y4a2M2RGNNLUNMXy01UzFZSGc3b0RHRHdNZGJScFg5V244VGgwYnVEZ1hpT2JQLVEwMFNqTEhzQQ?oc=5" target="_blank" class="source-link">Liu Qingyi defends title of Women's Breaking Dance at China's 15th National Games - Guangdong News</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 09:14:45 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>People's Daily Online</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE5weTVNcXZkS2ZJaV9NbGJEdUxCeGdxMHNVY2MyZTg1WFdzWWdQc3ZKa2F2XzFYQWRsRTRuelBYbWt3UlB3S3E3Y2F0aWRIb0NPQ2N0MElDTDVPcFZHMzZibFItQzg?oc=5" target="_blank" class="source-link">Highlights of volleyball women's U18 at China's 15th National Games - People's Daily Online</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 02:11:00 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>chinadailyasia.com</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMiWEFVX3lxTFBJQjU2TTdoR19KdUpsVm01RVE3ZHF3d3dRMTBUSkloSnJRSk0zNmxJWkdYZ3Z4eTlrODhQTnNmSlJCM1FjdGRGREE3eEpHRVdGWmpmMVJJclo?oc=5" target="_blank" class="source-link">Rain produces upsets, highlights at National Games - chinadailyasia.com</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 01:16:54 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>SwimSwam</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOTFlEQjBNVmpmSUtkMU9sLV8teDVHeW1ReEtFSXhoc1JUYUo0cmdZRTdMbC1MbWN3cy1JcFlzb0pnc0FBdk5fYVVnTzRiSnNFNEN5QS1ydi11ams2MEJZTTNYckhNUVNRNk94a2ozMk9wV1p5d2hfb1BMNXhRTVhIWl80bw?oc=5" target="_blank" class="source-link">2025 Chinese National Games: Day Eight Finals Live Recap - SwimSwam</a></td>
+                        <td style="color: #999;">Mon, 17 Nov 2025 14:32:32 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Financial Times</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPZGdoSXozN1FpSnNJME1Ld3dCckRUZXN4YzNmdlhKS2Vla1QxVXVhQ2V4bXJlMzF0VUkxbFZ6LXoyaURZc1J6UWU1Z2dkeWZBaHRNWmpEV1RkVHdPYnhmNWlWRzJ5dm9vUm5UYmxIeVloS3YzLUhieVZ3T3l0TjR5MExuOG9sRjNPVWVqOUZMdFRjNDBqeG5hUEkwZTFJWFp1cGhjd0I1aFc4Zw?oc=5" target="_blank" class="source-link">AIA Hong Kong Offers Free Rides on the Hong Kong Observation Wheel to Celebrate Athletes of National Games, National Games for Persons with Disabilities and National Special Olympic Games – Company Announcement - FT.com - Financial Times</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 06:45:00 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Xinhua</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE1WVVZ2aE1MNF9ZMHJTVHZ4Rkx6N0dXU1FCQlVSa0lndHEtekJacEhydGJtUjlHS3F6OGc5cUZ2ZVVNaTFOeHFwOExXNllKb1RjTE9JTmlFZXF5amNKc0t3cy1HeDBsUjJFay1IbjBUTmlmeGUwb3E5djBMaHo?oc=5" target="_blank" class="source-link">End of golden Chinese badminton generation - Xinhua</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 08:31:31 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Guangdong News</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTFBtWWFfeVNTeDVpV0NUSERhX0JkdUZWSU9yQ25QVk1UUTVqZG8tcC03RU9ZWmxFN1VQVTdvZGVvQjJWTHpvQ29SR1ZjcnVwUHRkV1NraTVEQVIyWVhDcXJ1OHhkQmNvZw?oc=5" target="_blank" class="source-link">Dragon and lion dance event of China's 15th National Games concludes in Foshan - Guangdong News</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 00:02:59 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>People's Daily Online</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTE9YUFgwNk1RaWczWTUxanNuRG9TRWwwdXRnRlNuZVJLYU9aYjhya2FoWExfNXBqY3ljSHNPNDVINHJ2YVV6eVJNUkhYR09hZGxua2tQZUxPazY1RHNZYjlaYjdGaw?oc=5" target="_blank" class="source-link">Lion dance electrifies at China's 15th National Games - People's Daily Online</a></td>
+                        <td style="color: #999;">Mon, 17 Nov 2025 06:28:00 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>news.cgtn.com</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWFF6dHN1VmRVc0RmZ3ZtdWNBcXprVUk3bWlsLU5XTkdCZ3hOQTZFZ0Z0ZE95YUFDMy1qekF3ZVZNRDlmYUVqc0MyMmc4MF9wOHhVQWVsd2RHNkZ5SlowQ2JrOUNjcHA3ZlJVY0xXckN0ZGd3Zm83WGdSQnA1Z3ZlbzMxMlBJME5zN1dBUGF6cXd3Mk5MUTRNd2hLN0pNNTIwbDlCVmVwZnVkWGFDZ0VQYUFJT2RhNWxVWGpOaVdmSWE?oc=5" target="_blank" class="source-link">Liu Qingyi continues to impress in breaking with gold medal at 15th National Games - news.cgtn.com</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 05:42:31 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Xinhua</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE50a0FvUlFBQU9EQ1BXdzI3NmV5bGNtLVZFeWJzY2ppc3J6Zmo1MmVlbnpBZURmMHNIaUFGMzBwWExSS1dLcEpvZEZTQUxHN1RINnFUSV9CQUtHdzFRemxCNEprLUtVb0lrSGtGZnp0QzIydHkzNkJndF95ZWU?oc=5" target="_blank" class="source-link">China's 15th National Games: men's 110m hurdles heat of athletics - Xinhua</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 05:31:26 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Guangdong News</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9DU2JZREtYaTdmdWVGa3Q5a1JUNkpkcVFYOXphVnN0S0FBS2NadTlLNTk1VGxPTEFrVFk2c05iWHR5d2xyWHVuMksxNHpUOUhHNlQ1WDNzMEo5QnpiSmQyZFdaNTlpYzA?oc=5" target="_blank" class="source-link">Guangdong women's doubles tennis team wins silver at 15th National Games - Guangdong News</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 15:11:44 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Xinhua</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE1uUS1jWnA1aV9yNjJTV0pfRkxhY19MRXllV0xQY3hmMlp3Wl9kOGxFc1NKY2NHUjlyR0E4STlTOUY0V0NOTzR0d2Y0MmlWbE9KWUI1NXVvWWhHNjZHX0cxUURHVUI1RnE0YVVYNFZJYncxUy0xSDdRRllxWkw?oc=5" target="_blank" class="source-link">China's 15th National Games: women's 100m hurdles heat of athletics - Xinhua</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 05:28:49 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Xinhua</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9rRWN4TElRWnY1WDZMUWRpMTFZaFozUlZYZTdCaGZMQmxkVEhaZ1VPN0NLdk9VbE8xbzV2b2FPSVpjNm9BbEpMME1Gd3dNTXZyVXFIeWQ0blFtRVNYVGNHRzg1eUlzelprQzI2N1JDSWU5XzVVaktBYVdvV28?oc=5" target="_blank" class="source-link">Lin Haochao of Shandong wins men's cycling BMX racing at National Games - Xinhua</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 12:46:22 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Xinhua</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE54cGxCMl9VNkk0U1Y5ckRGV3VuVksyZnNpSmRTUVNndG1aZHMzUUdoZUZNWjhTZ25TaWdidVBSYU1nSERwZkV0QnVsYkhNcXl5THRNYWJ3bzZHcXZoczF5VGNaVnFaQk9QZVNsZTF1eG5RMTFjTkpjY1FGd1A?oc=5" target="_blank" class="source-link">China's 15th National Games: women's canoe single 200m final A of canoe sprint - Xinhua</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 05:34:54 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Xinhua</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE9PNF9hcjJNR0RTMjVpWXJnWTlER0dfMFFNc1JzR3pERUphc0Z2WkNTZHJQNUQ0akdNX1BJSUxjcXRBMG01bWZyN215dDNmbHBpNUExbVg2cGt4ajRVWGt0VVBzMDlTNk9KSER4UDI2Q3JNZzBLZVNCU01qUQ?oc=5" target="_blank" class="source-link">China's 15th National Games: women's heptathlon long jump of athletics - Xinhua</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 03:27:05 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Xinhua</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9QRzgzWEdUZTgwZHVReTIwZ2FoV0JjQjdNNlI2MFZfeFZVb01rTWlfOThSQm9MaVNlYmJJd3hHTi1OVXBjUWxsYTdPc2dxb29aOVdJX3ZCU0dPWUxSVmRzSUlIeGZnb0ZJRTc3b3lVYTc3V1JYaHZEWldVZ00?oc=5" target="_blank" class="source-link">China's 15th National Games: men's canoe single 1000m final of canoe sprint - Xinhua</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 06:33:25 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Xinhua</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE92TWo4VWF5ell3ZkRLdDNMdEpmaTg0ZW1RdWw4LUdfcTFYMlI5eUcwY0RfSHg4SW5leWF4Mk8zWXNreEJUOGpwRUxtWXV6MHZOSTduRjV4aEZOX2U0cFliVF95cUVuRkg2azBaTjdBMEpfZ0xZbU1sTGthZmY?oc=5" target="_blank" class="source-link">China's 15th National Games: women's kayak double 500m final A of canoe sprint - Xinhua</a></td>
+                        <td style="color: #999;">Wed, 19 Nov 2025 06:07:44 GMT</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Time Out Worldwide</strong></td>
+                        <td><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxQbTNBYVdZUG00VXNKTnp4TjktOFo2T2daVmNUTTNkVFJ5bGNQTUMtT0RwODhMN0I0bjczd0pMd0VyenlFVXFJRks0a3g5Y2ZDN2dwSG5nRFJJNzRONlcxdm8xU0VSdnd4TDJCWElOQTBydzMxT0RTRjZ2LU96Rnc4NHg4TGg4RF95S2hCcVFYQl9VNXFOT2N5WURJUUtPNXJwVFRLRFpzbHZDZWRmamdDOTR3NmpSenMwLWNETA?oc=5" target="_blank" class="source-link">Hong Kong takes home 8 gold medals at 15th National Games – see the full scoreboard - Time Out Worldwide</a></td>
+                        <td style="color: #999;">Mon, 17 Nov 2025 20:10:46 GMT</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <footer>
+        <p><strong>Jet2 Holiday CS5481 group project</strong></p>
+        <p>Automated Topic Summary Page Generation | Powered by LLM</p>
+    </footer>
+
+</body>
+</html>

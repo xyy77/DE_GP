@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# macOS
+.DS_Store
+
+# R
+.Rhistory
+
+# Generated data files (optional - remove if you want to track these)
+# national_games.json
+# processed_data.json
+
+# Generated HTML (optional - remove if you want to track this)
+# index.html
+
+# Sensitive files
+.env
+*.key

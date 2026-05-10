@@ -1,0 +1,9 @@
+requests
+feedparser
+beautifulsoup4
+transformers
+accelerate
+bitsandbytes
+json_repair
+jinja2
+protobuf==3.20.3
